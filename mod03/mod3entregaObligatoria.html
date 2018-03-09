@@ -1,0 +1,34 @@
+ <!DOCTYPE html><html>
+<head>
+  <title>Date</title>
+  <meta charset="UTF-8">
+</head>
+<body>
+  <h1 id="h1"></h1>
+  <p> Ayelen Rey </p>
+  <h2 id="h2">La fecha y la hora son:</h2>
+  <div id="fecha"></div>
+
+  <div id="id1"></div>
+
+
+ <script type="text/javascript">
+  var fecha = new Date();
+  var msj;
+
+  if      (fecha.getHours() < 7)  { msj = "Buenas noches";}
+  else if (fecha.getHours() < 12) { msj = "Buenos días";}
+  else if (fecha.getHours() < 21) { msj = "Buenas tardes";}
+  else                                          { msj = "Buenas noches";}
+
+  document.getElementById("h1").innerHTML    = msj;
+  document.getElementById("fecha").innerHTML = fecha;
+  document.getElementById("id1").innerHTML = "<p></p>" + document.getElementById("h2").innerHTML;
+  document.getElementById("id1").innerHTML +=  "<p></p>" + document.getElementById("h1").outerHTML ;
+  document.getElementById("id1").innerHTML +=  "<p></p>" + document.href;
+  document.getElementById("id1").innerHTML +=  "<p></p>" + document.location;
+  document.getElementById("id1").innerHTML +=  "<p></p>" + "screen.width: " + screen.width + " || screen.heigth: " + screen.heigth;
+  
+</script>
+</body>
+</html>

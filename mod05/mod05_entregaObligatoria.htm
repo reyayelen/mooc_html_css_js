@@ -1,0 +1,193 @@
+
+<!DOCTYPE html> 
+<html><head><title>Calculadora jquery</title>
+            <meta charset="utf-8">
+  <style>
+  @import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono');
+  body  {font-family:'Share Tech Mono', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;}
+  button  {font-family:'Share Tech Mono', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;}
+  .calc{	background-color:LightGray;
+  }
+  </style>
+  <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous">
+  </script>
+
+  <script type="text/javascript">
+  $(function() {
+    var nant = 0; var op="";
+      
+     $("#n1").on("click", 
+      function(){ $("#n1").val("");}
+    );
+
+    $("#b1").on("click", 
+      function() {
+        var num = $("#n1");
+        num.val(num.val() * num.val());
+      }
+    );
+
+    /* inverso*/
+    $("#b2").on("click", 
+      function() {
+        var num = $("#n1");
+        num.val(1 / num.val());
+      }
+    );
+
+    /* raíz */
+    $("#b3").on("click", 
+      function() {
+        var num = $("#n1");
+        num.val(Math.sqrt(num.val()));
+      }
+    );
+
+    /* parte entera */
+    $("#b4").on("click", 
+      function() {
+        var num = $("#n1");
+        num.val(num.val() > 0 ? Math.floor(num.val()) : -Math.ceil(num.val()));
+      }
+    );
+
+    /* 2^n */
+    $("#b5").on("click", 
+      function() {
+        var num = $("#n1");
+        num.val(Math.pow(2,num.val()));
+      }
+    );
+
+
+    /* n! */
+    $("#b6").on("click", 
+      function() {
+        var num = $("#n1");
+        num.val(Fact(num.val()));
+        function Fact(num)
+        {
+            if (num === 0) { return 1; }
+            else { return num * Fact( num - 1 ); }
+        }
+      }
+    );
+
+    /* suma */
+    $("#b7").on("click", 
+      function() {
+        var num = $("#n1");
+        nant = +num.val();
+        op = "+";
+      }
+    );
+    /* resta */
+    $("#b8").on("click", 
+      function() {
+        var num = $("#n1");
+        nant = +num.val();
+        op = "-";
+      }
+    );
+    /* mult */
+    $("#b9").on("click", 
+      function() {
+        var num = $("#n1");
+        nant = +num.val();
+        op = "*";
+      }
+    );
+    /* div */
+    $("#b10").on("click", 
+      function() {
+        var num = $("#n1");
+        nant = +num.val();
+        op = "/";
+      }
+    );
+
+    /* pow */
+    $("#b11").on("click", 
+      function() {
+        var num = $("#n1");
+        nant = +num.val();
+        op = "pow";
+      }
+    );
+    
+    /* sumatorio(x) (sumatorio de n números)*/
+    $("#b12").on("click", 
+      function() {
+        var num = $("#n1");        
+        var lista = num.val().split(",");
+        for (var i=0, acc=0; i<lista.length; i++)
+          acc += +lista[i];
+        num.val(acc);
+      }
+    );
+
+    /* sumatorio(x) (sumatorio de n números)*/
+    $("#b13").on("click", 
+      function() {
+        var num = $("#n1");        
+        var lista = num.val().split(",");
+        for (var i=0, acc=1; i<lista.length; i++)
+          acc *= +lista[i];
+        num.val(acc);
+      }
+    );
+
+    /* calc */
+    $("#calc").on("click", 
+      function() {
+        console.log(op, nant);
+        var num = $("#n1");
+        if (op == "+") num.val(nant + +num.val());
+        if (op == "-") num.val(nant - +num.val());
+        if (op == "*") num.val(nant * +num.val());
+        if (op == "/") num.val(nant / +num.val());
+        if (op == "pow") num.val(Math.pow(nant,+num.val()));
+      }
+    );
+    
+
+  });
+
+  </script>
+
+</head>
+
+<body>
+<h1>Buenos días, bienvenido a la calculadora de Ayelen Rey</h1>
+  Número:
+  <input type="text" id="n1"><button id="calc">=</button>
+  <div>
+        <p>Operaciones binarias (con dos operandos)</p>
+        <button id="b11">x<sup>y</sup></button>
+        <button id="b7">+</button>
+        <button id="b8">-</button>
+        <button id="b9">*</button>
+        <button id="b10">/</button>
+    </div>
+    <div>
+        <p>Operaciones unitarias (con un solo operando)</p>
+        <button id="b1"> x<sup>2</sup> </button>
+        <button id="b2">1/x</button>
+        <button id="b3">√ </button>
+        <button id="b4">ent</button>
+        <button id="b5">2^<sup>n</sup></button>
+        <button id="b6">n!</button>
+    </div>
+    <div>
+        <p>Operaciones con listas CSV</p>
+        <button id="b12"> Σ x </button>
+        <button id="b13"> producto(x) </button>
+    </div>
+    <p>
+    </div>  
+</body>
+</html>
+

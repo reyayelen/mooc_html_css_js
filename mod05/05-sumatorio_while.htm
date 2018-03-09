@@ -1,0 +1,60 @@
+
+<!DOCTYPE html><html>
+<head><title>Ejemplo</title><meta charset="utf-8">
+
+<script type="text/javascript">
+
+function vaciar () {
+  document.getElementById("n1").value = "";
+}
+
+function ejecutar (x) {
+  x = f_1(true)();
+  console.log(x);
+}
+
+function f_1 (x) {
+    function cero () { return 0; };
+    function uno () { return 1; };
+    if (x) { return uno; }
+     else { return cero; }
+};
+
+var f_2 = function () {
+    var x = 1;
+    return function () { return x = x*2; };
+} ();
+
+function cero () { return 0; } 
+function uno () { return 1; } 
+
+var x = cero; 
+var y = uno; 
+
+var z = cero(); 
+var t = uno(); 
+
+
+function sumatorio() {
+  var num = document.getElementById("n1");
+
+  var lista = num.value.split(",");
+
+  var i = 0, acc = 0;
+  while ( i < lista.length ) {
+    acc = acc + (+lista[i]);
+    i++;
+  }
+  
+  num.value = acc;
+}
+</script>
+</head><body>
+
+  Número:
+  <input type="text" id="n1" onclick="vaciar()">
+  <p>
+  <button onclick="ejecutar()">Σ x</button>
+  </p>
+  
+</body></html>

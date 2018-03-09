@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Ejemplo</title>
+<meta charset="utf-8">
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono');
+  body  {font-family:'Share Tech Mono', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;}
+  .calc{	background-color:LightGray;
+  }
+</style>
+
+<script type="text/javascript">
+
+  var num, acc = 0, op = "";
+
+  function mas()   { 
+    acc = +num.value;  op = "+";
+    prev.innerHTML = num.value + op;
+  }
+
+  function menos() { 
+
+    acc = +num.value;  op = "-"; 
+    prev.innerHTML = num.value + op;
+  }
+
+  function mult() { 
+    acc = +num.value;  op = "*"; 
+    prev.innerHTML = num.value + op;
+  }
+
+  function div() { 
+    acc = +num.value;  op = "/"; 
+    prev.innerHTML = num.value + op;
+  }
+
+  function calcular() {
+    if (op === "+") {num.value = (acc + +num.value)}
+    if (op === "-") {num.value = (acc - +num.value)}
+    if (op === "*") {num.value = (acc * +num.value)}
+    if (op === "/") {num.value = (acc / +num.value)}
+    if (op === "^") {num.value = Math.pow(+acc ,+num.value)}
+    prev.innerHTML="";
+    acc = "";
+  }
+
+  function inic ()   {num = document.getElementById("num");
+                      prev = document.getElementById("auxiliar");
+  }
+  
+  function vaciar () {num.value = "";}  
+  function pot () {num.value = Math.pow(+num.value, 2);}  
+  function potxy () {
+    acc = +num.value;  op = "^";
+    prev.innerHTML = num.value + op;
+    }  
+  function inverso () {num.value = 1 / +num.value;}  
+  function raiz () {num.value = Math.sqrt(+num.value);}
+  function parte_entera () {num.value  = +num.value > 0 ?  Math.floor(+num.value) : -Math.ceil(+num.value);}
+
+</script>
+</head>
+<body onLoad="inic()">
+  <h1>Calculadora by Aye Rey</h1>
+  <h2>Operaciones posibles:</h2>
+  <h3>A) Operaciones unitarias (con un solo operando):</h3>
+  <ol>
+    <li> x^2 (número elevado al cuadrado)</li>
+    <li> 1/x (inverso del número)</li>
+    <li> sqrt(x) (raiz cuadrada del número)</li>
+    <li> parte_entera(x) (parte entera de x: si x es positivo devuelve Math.floor(x) y si es negativo devuelve -Math.ceil(x))</li>
+  </ol>
+  <h3>B) Operaciones binarias (con dos operandos):</h3>
+  <ol>
+    <li> +. -. *, / (suma, resta, multiplicación y división)</li>
+    <li> x^y (x elevado a y)</li>
+  </ol>
+  <div class="calc">
+  Número:<p>
+  <p id=auxiliar><p>
+  <input type="text" size="12" id="num" onClick="vaciar()"><button onClick="calcular()">=</button>   
+  <p>
+  </p>
+  <div>
+      <p>Operaciones binarias (con dos operandos)</p>
+      <button onClick="potxy()">x<sup>y</sup></button>
+      <button onClick="mas()">+</button>
+      <button onClick="menos()">-</button>
+      <button onClick="mult()">*</button>
+      <button onClick="div()">/</button>
+  </div>
+  <div>
+      <p>Operaciones unitarias (con un solo operando)</p>
+      <button onClick="pot()">x<sup>2</sup></button>
+      <button onClick="inverso()">1/x</button>
+      <button onClick="raiz()">√ </button>
+      <button onClick="parte_entera()">ent</button>
+  </div>
+  </div>  
+</body>
+</html>
