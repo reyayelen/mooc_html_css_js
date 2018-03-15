@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/bootstrap.css" rel="stylesheet">
+<style type="text/css">
+* { user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    margin:0;
+    padding:0;
+}
+
+#sortable { 
+  list-style-type: none;
+   margin-left:auto;
+   margin-right:auto;
+}
+
+#sortable li { 
+  float: left; 
+  width: 33%; 
+}
+
+#sortable li img {
+  vertical-align:bottom;
+  width: 100%; 
+  height: auto;
+}
+
+@media (orientation:landscape){ #sortable {width:100vh;}}
+@media (orientation:portrait) { #sortable {width:100%;}}
+
+.calc{	background-color:LightGray;
+}
+
+</style>
+<script src="js/jquery-1.11.2.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.ui.touch-punch.min.js"></script>
+<script src="js/bootstrap.js"></script>
+
+<script>
+  $(function() {
+   $( "#sortable" ).sortable();
+   $( "#sortable" ).disableSelection();
+   var mem = $("#mem"); 
+   mem.html("Memoria: Empty");
+   var memN = 0 ;
+
+    var nant = 0; var op="";
+      
+     $("#n1").on("click", 
+      function(){ $("#n1").val("");}
+    );
+
+    $("#b1").on("click", 
+      function() {
+        var num = $("#n1");
+        num.val(num.val() * num.val());
+      }
+    );
+
+    /* inverso*/
+    $("#b2").on("click", 
+      function() {
+        var num = $("#n1");
+        num.val(1 / num.val());
+      }
+    );
+
+    /* raíz */
+    $("#b3").on("click", 
+      function() {
+        var num = $("#n1");
+        num.val(Math.sqrt(num.val()));
+      }
+    );
+
+    /* parte entera */
+    $("#b4").on("click", 
+      function() {
+        var num = $("#n1");
+        num.val(num.val() > 0 ? Math.floor(num.val()) : -Math.ceil(num.val()));
+      }
+    );
+
+    /* 2^n */
+    $("#b5").on("click", 
+      function() {
+        var num = $("#n1");
+        num.val(Math.pow(2,num.val()));
+      }
+    );
+
+
+    /* n! */
+    $("#b6").on("click", 
+      function() {
+        var num = $("#n1");
+        num.val(Fact(num.val()));
+        function Fact(num)
+        {
+            if (num === 0) { return 1; }
+            else { return num * Fact( num - 1 ); }
+        }
+      }
+    );
+
+    /* suma */
+    $("#b7").on("click", 
+      function() {
+        var num = $("#n1");
+        nant = +num.val();
+        op = "+";
+      }
+    );
+    /* resta */
+    $("#b8").on("click", 
+      function() {
+        var num = $("#n1");
+        nant = +num.val();
+        op = "-";
+      }
+    );
+    /* mult */
+    $("#b9").on("click", 
+      function() {
+        var num = $("#n1");
+        nant = +num.val();
+        op = "*";
+      }
+    );
+    /* div */
+    $("#b10").on("click", 
+      function() {
+        var num = $("#n1");
+        nant = +num.val();
+        op = "/";
+      }
+    );
+
+    /* pow */
+    $("#b11").on("click", 
+      function() {
+        var num = $("#n1");
+        nant = +num.val();
+        op = "pow";
+      }
+    );
+    
+    /* sumatorio(x) (sumatorio de n números)*/
+    $("#b12").on("click", 
+      function() {
+        var num = $("#n1");        
+        var lista = num.val().split(",");
+        for (var i=0, acc=0; i<lista.length; i++)
+          acc += +lista[i];
+        num.val(acc);
+      }
+    );
+
+    /* sumatorio(x) (sumatorio de n números)*/
+    $("#b13").on("click", 
+      function() {
+        var num = $("#n1");        
+        var lista = num.val().split(",");
+        for (var i=0, acc=1; i<lista.length; i++)
+          acc *= +lista[i];
+        num.val(acc);
+      }
+    );
+
+    /* calc */
+    $("#calc").on("click", 
+      function() {
+        console.log(op, nant);
+        var num = $("#n1");
+        if (op == "+") num.val(nant + +num.val());
+        if (op == "-") num.val(nant - +num.val());
+        if (op == "*") num.val(nant * +num.val());
+        if (op == "/") num.val(nant / +num.val());
+        if (op == "pow") num.val(Math.pow(nant,+num.val()));
+      }
+    );
+    $("#Tom").on("click", 
+      function() {
+        var num = $("#n1");     
+        memN=num.val();
+        mem.html("Memoria: " + num.val() );
+      }
+    );
+    $("#FromM").on("click", 
+      function() {
+        var num = $("#n1");        
+        num.val(memN);
+      }
+    );
+
+  });
+</script>  
+</head>
+<body>
+
+<div class="container">
+<nav class="navbar navbar-inverse ">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#miMenu">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span> 
+      </button>
+      <a class="navbar-brand" href="10-index.html">MOOC</a>
+    </div>
+    <div class="collapse navbar-collapse" id="miMenu">
+      <ul class="nav navbar-nav">
+        <li><a href="10-index.html">INICIO</a></li>
+        <li><a href="10-ejercicio_puzzle.html">PUZZLE</a></li>
+        <li class="active"><a href="calculadora.html">Calculadora</a></li> 
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="ejercicio">
+    <h1>Buenos días, bienvenido a la calculadora de Ayelen Rey</h1>
+    Número:
+    <input type="text" id="n1"><button id="calc">=</button><button id="Tom">ToM</button><button id="FromM">FromM</button>
+    <div id="mem"></div>
+    <div>
+          <p>Operaciones binarias (con dos operandos)</p>
+          <button id="b11">x<sup>y</sup></button>
+          <button id="b7">+</button>
+          <button id="b8">-</button>
+          <button id="b9">*</button>
+          <button id="b10">/</button>
+      </div>
+      <div>
+          <p>Operaciones unitarias (con un solo operando)</p>
+          <button id="b1"> x<sup>2</sup> </button>
+          <button id="b2">1/x</button>
+          <button id="b3">√ </button>
+          <button id="b4">ent</button>
+          <button id="b5">2^<sup>n</sup></button>
+          <button id="b6">n!</button>
+      </div>
+      <div>
+          <p>Operaciones con listas CSV</p>
+          <button id="b12"> Σ x </button>
+          <button id="b13"> producto(x) </button>
+      </div>
+      <p>
+      </div>  
+</div>
+<div class="panel-footer">Ayelen Rey</div>
+</div>
+
+</body>
+</html>
+
