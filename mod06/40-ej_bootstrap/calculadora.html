@@ -18,6 +18,7 @@
 
 #ejercicio {
   font-family: 'Patua One', cursive;
+  background-color:LightGray;
 }
 
 #sortable { 
@@ -50,8 +51,6 @@
 @media (orientation:landscape){ #sortable {width:100vh;}}
 @media (orientation:portrait) { #sortable {width:100%;}}
 
-.calc{	background-color:LightGray;
-}
 </style>
 
 <script src="js/jquery-1.11.2.min.js"></script>
@@ -66,6 +65,13 @@
    var mem = $("#draggable"); 
    mem.html("Memoria: Empty");
    var memN = 0 ;
+    function pulsar(tecla){
+      if (tecla === undefined){
+        $("#prev").html("");
+      }else{
+        $("#prev").append(tecla);
+      }
+    }
 
     var nant = 0; var op="";
       
@@ -132,6 +138,7 @@
         var num = $("#n1");
         nant = +num.val();
         op = "+";
+        pulsar(nant + op);
       }
     );
     /* resta */
@@ -140,6 +147,7 @@
         var num = $("#n1");
         nant = +num.val();
         op = "-";
+        pulsar(nant + op);
       }
     );
     /* mult */
@@ -148,6 +156,7 @@
         var num = $("#n1");
         nant = +num.val();
         op = "*";
+        pulsar(nant + op);
       }
     );
     /* div */
@@ -156,6 +165,7 @@
         var num = $("#n1");
         nant = +num.val();
         op = "/";
+        pulsar(nant + op);
       }
     );
 
@@ -165,6 +175,7 @@
         var num = $("#n1");
         nant = +num.val();
         op = "pow";
+        pulsar(nant + '^');
       }
     );
     
@@ -200,6 +211,7 @@
         if (op == "*") num.val(nant * +num.val());
         if (op == "/") num.val(nant / +num.val());
         if (op == "pow") num.val(Math.pow(nant,+num.val()));
+        pulsar();
       }
     );
 
@@ -211,6 +223,7 @@
         console.log(memN);
       }
     );
+
     $("#FromM").on("click", 
       function() {
         var num = $("#n1"); 
@@ -228,6 +241,8 @@
       }
     });
   });
+
+
 </script>  
 </head>
 <body>
@@ -259,7 +274,7 @@
       <input  contentEditable="true" id="n1"><button id="calc">=</button><button id="Tom">ToM</button><button id="FromM">FromM</button>
     </div>
     <div id="draggable"><p>Memory!</p></div>
-    <div id="preview"><p>Preview : </p></div>
+    <div id="preview"><p>Preview : </p><p id='prev'></p></div>
     <div>
           <p>Operaciones binarias (con dos operandos)</p>
           <button id="b11">x<sup>y</sup></button>
