@@ -1,0 +1,54 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@font-face {
+	font-family: Milkshake;
+	  src: url(../fonts/Milkshake.otf);
+}
+body{
+	font-family: 'Roboto', "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	background-color:#76BFA8;
+	
+}
+.flexible{
+	display:-webkit-box;
+	display:-ms-flexbox;
+	display:-webkit-flex;
+	display:flex;
+
+	-webkit-flex-wrap:wrap;
+	flex-wrap:wrap;
+}
+.caja {
+  width:25em;
+  float: left;
+  background-color:#D75A43;
+  padding:1em;
+  float: left;
+}
+.caja p{
+  font-family: 'Fredericka the Great', cursive;
+}
+body h1 {
+	margin:0;
+	color: #5E4131;
+	font-size: 200%;
+	font-family: 'Fredericka the Great', cursive;
+}
+h2 {
+	margin:0;
+	color: #F1791A;
+	font-size: 150%;
+}
+h3 {
+	margin:0;
+	color: #D75A43;
+	font-size: 120%;
+}
+section {
+	background-color:rgba(226, 226, 226, 0.514);
+	flex-basis: 70%;
+}
+footer {
+	background-color:LightGray;
+}

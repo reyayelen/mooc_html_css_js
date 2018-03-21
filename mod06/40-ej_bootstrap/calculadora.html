@@ -5,6 +5,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/bootstrap.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Special+Elite" rel="stylesheet">
 <style type="text/css">
 * { user-select: none;
     -webkit-touch-callout: none;
@@ -12,6 +14,10 @@
     -webkit-tap-highlight-color: transparent;
     margin:0;
     padding:0;
+}
+
+#ejercicio {
+  font-family: 'Patua One', cursive;
 }
 
 #sortable { 
@@ -30,14 +36,24 @@
   width: 100%; 
   height: auto;
 }
+#droppable {
+  border: 1px;
+  height: 40px;
+  width: 300px;
+}
+#draggable {
+  border: 1px;
+  height: 40px;
+  width: 150px;
+}
 
 @media (orientation:landscape){ #sortable {width:100vh;}}
 @media (orientation:portrait) { #sortable {width:100%;}}
 
 .calc{	background-color:LightGray;
 }
-
 </style>
+
 <script src="js/jquery-1.11.2.min.js"></script>
 <script src="js/jquery-ui.min.js"></script>
 <script src="js/jquery.ui.touch-punch.min.js"></script>
@@ -47,7 +63,7 @@
   $(function() {
    $( "#sortable" ).sortable();
    $( "#sortable" ).disableSelection();
-   var mem = $("#mem"); 
+   var mem = $("#draggable"); 
    mem.html("Memoria: Empty");
    var memN = 0 ;
 
@@ -186,20 +202,31 @@
         if (op == "pow") num.val(Math.pow(nant,+num.val()));
       }
     );
+
     $("#Tom").on("click", 
       function() {
         var num = $("#n1");     
         memN=num.val();
         mem.html("Memoria: " + num.val() );
+        console.log(memN);
       }
     );
     $("#FromM").on("click", 
       function() {
-        var num = $("#n1");        
-        num.val(memN);
+        var num = $("#n1"); 
+        console.log(memN);
+        num.val(memN); 
       }
     );
 
+    $("#draggable" ).draggable({revert:"invalid", helper:"clone"});
+
+    $("#droppable" ).droppable({activeClass:"act" , 
+      drop: function( event, ui ) {
+        var num = $("#n1");        
+        num.val(memN);
+      }
+    });
   });
 </script>  
 </head>
@@ -225,11 +252,14 @@
     </div>
   </div>
 </nav>
-<div class="ejercicio">
+<div id="ejercicio">
     <h1>Buenos días, bienvenido a la calculadora de Ayelen Rey</h1>
     Número:
-    <input type="text" id="n1"><button id="calc">=</button><button id="Tom">ToM</button><button id="FromM">FromM</button>
-    <div id="mem"></div>
+    <div id="droppable"> 
+      <input  contentEditable="true" id="n1"><button id="calc">=</button><button id="Tom">ToM</button><button id="FromM">FromM</button>
+    </div>
+    <div id="draggable"><p>Memory!</p></div>
+    <div id="preview"><p>Preview : </p></div>
     <div>
           <p>Operaciones binarias (con dos operandos)</p>
           <button id="b11">x<sup>y</sup></button>

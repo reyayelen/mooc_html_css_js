@@ -1,0 +1,95 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great');
+@import url('https://fonts.googleapis.com/css?family=Kavivanar');
+body{
+	font-family: 'Kavivanar', "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	background-color:#76BFA8;
+	margin:1em;
+	
+}
+.videobox{
+	
+}
+.megacontainer{
+	align-items: center;
+}
+.namecontainer h1 {
+	font-family: 'Kavivanar', cursive;
+	color:whitesmoke;
+  font-size: 2.5em;
+}
+.namecontainer p {
+	font-family: 'Kavivanar', cursive;
+	color:whitesmoke;
+  font-size: 1em;
+}
+.namecontainer{
+	border: 1em;
+	width: 200px;
+	height: 200px;
+	float: left;
+	padding: 5px;
+	margin: auto;
+	border: 1px solid whitesmoke;
+	background-color: #76BFA8;
+	
+}
+.container h1 {
+	font-family: 'Kavivanar', cursive;
+	color:rgb(226, 224, 224);
+	background-color: rgb(65, 81, 151);
+	font-size: 1.125em;
+	
+	
+}
+.container p {
+	font-family: 'Kavivanar', cursive;
+	color: #666;
+  font-size: 1em;
+}
+.container{
+	border: 1em;
+	width: 200px;
+	height: 200px;
+	float: left;
+	padding: 5px;
+	margin: auto;
+	border: 1px solid #666;
+	background-color: white;
+	text-align: center;
+}
+.caja {
+  width:200px;
+  float: left;
+  background-color:#D75A43;
+  padding:1em;
+}
+.caja p{
+  font-family: 'Fredericka the Great', cursive;
+}
+body h1 {
+	margin:0;
+	color: #5E4131;
+	font-size: 200%;
+	font-family: 'Fredericka the Great', cursive;
+}
+h2 {
+	margin:0;
+	color: #F1791A;
+	font-size: 150%;
+}
+h3 {
+	margin:0;
+	color: #D75A43;
+	font-size: 120%;
+}
+section {
+	background-color:rgba(226, 226, 226, 0.514);
+	flex-basis: 70%;
+}
+.sectionstyle {
+	margin-left: 15em;
+}
+footer {
+	background-color:LightGray;
+}
