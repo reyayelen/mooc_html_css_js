@@ -16,6 +16,21 @@
     padding:0;
 }
 
+#info {
+  position: absolute;
+  top: 5%;
+  left: 10%; 
+  zoom: 1;
+  filter: alpha(opacity=0); /*Opacidad Para IE */
+  opacity: 0; 
+  padding: 5px;
+  color: white;
+  background: black;
+  -moz-transition:all ease .8s;
+  -webkit-transition:all ease .8s ;
+  transition:all ease .8s;
+}
+
 #ejercicio {
   font-family: 'Patua One', cursive;
   background-color:LightGray;
@@ -23,7 +38,6 @@
   margin-right: 15%;
   margin-bottom: 5%;
   padding: 20px;
-  
 }
 
 #sortable { 
@@ -53,7 +67,14 @@
   width: 300px;
   padding: 1%;
   border-style: solid;
+  border-color:blueviolet;
+  position: relative; 
 }
+#draggable:hover #info {
+filter: alpha(opacity=80);
+opacity: .8; 
+}
+
 #draggable2{
   border: 1px;
   border-style: solid;
@@ -296,7 +317,9 @@
       <button id="calc">=</button><button id="Tom">ToM</button><button id="FromM">FromM</button>
       </div>
     </div>
-    <div id="draggable"><p>Memory!</p></div>
+    <div id="draggable"><p>Memory!</p>
+      <div id="info"> <p>Aquí lo que vamos a mostrar cuando hagan hover.</p></div>
+    </div>
     <div id="preview"><p>Preview : </p><p id='prev'></p></div>
     <div>
           <p>Operaciones binarias (con dos operandos)</p>
