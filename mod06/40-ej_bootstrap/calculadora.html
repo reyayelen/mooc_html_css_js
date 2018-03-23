@@ -50,7 +50,17 @@
 #draggable {
   border: 1px;
   height: 40px;
-  width: 150px;
+  width: 300px;
+  padding: 1%;
+  border-style: solid;
+}
+#draggable2{
+  border: 1px;
+  border-style: solid;
+  height: 40px;
+  width: 300px;
+  padding: 2%;
+;
 }
 
 @media (orientation:landscape){ #sortable {width:100vh;}}
@@ -224,20 +234,26 @@
         var num = $("#n1");     
         memN=num.val();
         mem.html("Memoria: " + num.val() );
-        console.log(memN);
       }
     );
 
     $("#FromM").on("click", 
       function() {
         var num = $("#n1"); 
-        console.log(memN);
         num.val(memN); 
       }
     );
 
     $("#draggable" ).draggable({revert:"invalid", helper:"clone"});
-
+    $("#draggable2" ).draggable({revert:"invalid", helper:"clone"});
+    
+    $("#draggable" ).droppable({activeClass:"act" , 
+      drop: function( event, ui ) {
+        var num = $("#n1");     
+        memN=num.val();
+        mem.html("Memoria: " + num.val() );
+      }
+    });
     $("#droppable" ).droppable({activeClass:"act" , 
       drop: function( event, ui ) {
         var num = $("#n1");        
@@ -275,7 +291,10 @@
     <h1>Buenos días, bienvenido a la calculadora de Ayelen Rey</h1>
     Número:
     <div id="droppable"> 
-      <input  contentEditable="true" id="n1"><button id="calc">=</button><button id="Tom">ToM</button><button id="FromM">FromM</button>
+      <div id="draggable2"> 
+      <input  contentEditable="true" id="n1">
+      <button id="calc">=</button><button id="Tom">ToM</button><button id="FromM">FromM</button>
+      </div>
     </div>
     <div id="draggable"><p>Memory!</p></div>
     <div id="preview"><p>Preview : </p><p id='prev'></p></div>
