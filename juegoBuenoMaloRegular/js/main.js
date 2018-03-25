@@ -5,7 +5,6 @@
 	generarJuego();
 
 	function generarJuego(){
-		console.log("random", Math.floor(Math.random()*10));
 		rta = [,,,];
 		rndm = "" + Math.floor(Math.random()*10);
 		for (var i=0; i<4 ; i++){
@@ -14,33 +13,9 @@
 			}
 			rta[i] = rndm.toString();
 		}
-		console.log("pos1", rta[0]);
-		console.log("pos2", rta[1]);
-		console.log("pos3", rta[2]);
-		console.log("pos4", rta[3]);
-		
 	}
 
-	"use strict";
-	$('.column100').on('mouseover',function(){
-		var table1 = $(this).parent().parent().parent();
-		var table2 = $(this).parent().parent();
-		var verTable = $(table1).data('vertable')+"";
-		var column = $(this).data('column') + ""; 
-
-		$(table2).find("."+column).addClass('hov-column-'+ verTable);
-		$(table1).find(".row100.head ."+column).addClass('hov-column-head-'+ verTable);
-	});
-
-	$('.column100').on('mouseout',function(){
-		var table1 = $(this).parent().parent().parent();
-		var table2 = $(this).parent().parent();
-		var verTable = $(table1).data('vertable')+"";
-		var column = $(this).data('column') + ""; 
-
-		$(table2).find("."+column).removeClass('hov-column-'+ verTable);
-		$(table1).find(".row100.head ."+column).removeClass('hov-column-head-'+ verTable);
-	});
+	
 	
 	$('#validar').on('click',function(){
 		if ($("#n1").val().length !== 4 ){window.alert("Debe ser un número de 4 dígitos");}
@@ -56,8 +31,7 @@
 		}
 	});
 
-	function validar_jugada(num){
-		console.log('iniciando validar ');
+	function validar_jugada(num){ 
 		var response = [0,0,0];
 		input = num.split("");
         for(i=0; i<4 ; i++)	{
@@ -65,9 +39,6 @@
 			else if ((rta.indexOf(input[i])) != -1){response[2] += 1 ;}
 			else {response[1] += 1 ; }
 		}
-		console.log("buenos", response[0]);
-		console.log("malos", response[1]);
-		console.log("regulares", response[2]);
 		return response;
 	}
 	
